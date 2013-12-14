@@ -2,15 +2,21 @@
 
 /* Controllers */
 
-var phonecatControllers = angular.module('phonecatControllers', []);
+var andibControllers = angular.module('andibControllers', []);
 
-phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
+andibControllers.controller('StartCtrl', ['$scope', 
+  function($scope) {
+	// wenn nötig
+  }]);
+
+
+andibControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
   function($scope, Phone) {
     $scope.phones = Phone.query();
     $scope.orderProp = 'age';
   }]);
 
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
+andibControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
   function($scope, $routeParams, Phone) {
     $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
       $scope.mainImageUrl = phone.images[0];
