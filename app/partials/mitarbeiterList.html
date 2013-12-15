@@ -1,5 +1,32 @@
-<div class="container-fluid">
+<div ng-controller="MitarbeiterListCtrl">
 	
-<p>Liste aller Mitarbeiter</p>
+	<h1>Liste aller Mitarbeiter</h1>
+	
+	<table width="100%">
+	  <colgroup>
+	    <col width="5%">
+	    <col width="40%">
+	    <col width="40%">
+	   	<col width="5%">
+	    <col width="5%">
+	    <col width="5%">
+	  </colgroup>
+	  <tr align = 'left'>
+	    <th>#</th>
+	    <th>Vorname</th>
+	    <th>Nachname</th>
+	    <th>Details</th>
+	    <th>Bearbeiten</th>
+	    <th>Löschen</th>
+	  </tr>
+	  <tr ng-repeat="m in mitarbeiterliste.mitarbeiter">
+	    <td>{{mitarbeiterliste.mitarbeiter.indexOf(m)+1}}</td>
+	    <td>{{m.vorname}}</td>
+	    <td>{{m.nachname}}</td>
+	    <td><img ng-src="img/icon/open.png"></td>
+		<td><img ng-src="img/icon/edit.png"></td>
+		<td><img ng-src="img/icon/delete.png"></td>
+	  </tr>
+	</table>
 
 </div>

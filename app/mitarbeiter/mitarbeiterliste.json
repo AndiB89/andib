@@ -1,0 +1,37 @@
+{
+    "mitarbeiter": [
+      {
+        "anrede": "Herr",
+        "titel": "Prof.",
+        "vorname": "Andreas",
+        "nachname": "Bopp",
+        "geschlecht": "männlich",
+        "adresse": {
+          "strasse": "Rüppurer Strasse",
+          "hnr": "60",
+          "plz": "76137",
+          "ort": "Karlsruhe"
+        },
+        "hobbies": {
+          "hobby": [
+            "Tennis",
+            "Laufen"
+          ]
+        }
+      },
+      {
+        "anrede": "Herr",
+        "titel": "Prof.",
+        "vorname": "Philipp",
+        "nachname": "Zehnder",
+        "geschlecht": "männlich",
+        "adresse": {
+          "strasse": "Brunnengasse",
+          "hnr": "69",
+          "plz": "76137",
+          "ort": "Karlsruhe"
+        },
+        "hobbies": { "hobby": "Programmieren" }
+      }
+    ]
+  }

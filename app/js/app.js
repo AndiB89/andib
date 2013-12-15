@@ -18,11 +18,11 @@ phonecatApp.config(['$routeProvider',
       }).
 	  when('/start/mitarbeiterCreate', {
         templateUrl: 'partials/mitarbeiterCreate.html',
-        controller: 'mitarbeiterCreateCtrl'
+        controller: 'MitarbeiterCreateCtrl'
       }).
   	  when('/start/mitarbeiterList', {
         templateUrl: 'partials/mitarbeiterList.html',
-        controller: 'mitarbeiterListCtrl'
+        controller: 'MitarbeiterListCtrl'
       }).
       when('/phones', {
         templateUrl: 'partials/phone-list.html',

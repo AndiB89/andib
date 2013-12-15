@@ -1,5 +1,88 @@
-<div class="container-fluid">
-	
-<p>Mitarbeiter anlegen</p>
-
+<div ng-controller="MitarbeiterCreateCtrl">
+	<form name="mitarbeiterCreate">
+		
+		<h1>Mitarbeiter anlegen</h1>
+		
+		</br>
+		
+		
+		<table>
+		  <tr>
+		    <td>Titel:</td>
+		    <td>
+		    	<span  class="nullable">
+		        <select ng-model="anrede" ng-options="t.titel for t in titels">
+		          <option value="">-- Wähle Titel --</option>
+		        </select>
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>Vorname:</td>
+		    <td><input ng-model="user.vorname" name="vorname" required></td>
+		  </tr>
+		  <tr>
+		    <td>Nachname:</td>
+		    <td><input ng-model="user.nachname" name="nachname" required></td>
+		  </tr>
+  		  <tr>
+		    <td>Geschlecht:</td>
+		    <td>
+				<input type="radio" ng-model="user.geschlecht" value="maennlich" />Männlich
+      			<input type="radio" ng-model="user.geschlecht" value="weiblich" />Weiblich
+			</td>
+		  </tr>
+		  <tr>
+		    <td>Straße:</td>
+		    <td><input ng-model="user.adresse.strasse" name="strasse"></td>
+		  </tr>
+		  <tr>
+		    <td>Hausnummer:</td>
+		    <td><input ng-model="user.adresse.hnr" name="hnr"></td>
+		  </tr>
+		  <tr>
+		    <td>PLZ:</td>
+		    <td><input ng-model="user.adresse.plz" name="plz"></td>
+		  </tr>
+		  <tr>
+		    <td>Ort:</td>
+		    <td><input ng-model="user.adresse.ort" name="ort"></td>
+		  </tr>
+		  <tr>
+		    <td>Geburtsdatum:</td>
+		    <td><input ng-model="user.geburtsdatum" name="geburtsdatum"></td>
+		  </tr>
+		  <tr>
+		    <td>Hobbies:</td>
+		    <td>
+			    <ul>
+			      <li ng-repeat="h in hobbies">
+			        <input ng-model="h.hobby">
+			        [<a href ng-click="hobbies.splice($index, 1)">X</a>]
+			      </li>
+			      <li>
+			        [<a href ng-click="hobbies.push({})">Weiteres Hobby hinzufügen</a>]
+			      </li>
+			    </ul>
+   			 <hr/>
+   			 
+			 <tr>
+			    <td>Benutzername:</td>
+			    <td><input ng-model="user.benutzername" name="benutzername" required placeholder="Benutzername eingeben"></td>
+			  </tr>
+			  <tr>
+			    <td>Passwort:</td>
+			    <td><input type='password' ng-model="user.passwort" name="passwort" required placeholder="Passwort eingeben"></td>
+			  </tr>
+				</td>
+			  </tr>
+		</table>
+		
+		<hr/>
+		
+		
+		 <button ng-click="reset()" ng-disabled="isUnchanged(user)">Zurücksetzen</button>
+     	 <button ng-click="save(user)"
+     	 
+              ng-disabled="mitarbeiterCreate.$invalid || isUnchanged(user)">Speichern</button>
+	</form>
 </div>

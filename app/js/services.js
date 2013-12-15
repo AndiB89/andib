@@ -10,3 +10,10 @@ andibServices.factory('Phone', ['$resource',
       query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
     });
   }]);
+  
+andibServices.factory('Mitarbeiterliste', ['$resource',
+  function($resource){
+    return $resource('mitarbeiter/mitarbeiterliste.json', {}, {
+      query: {method:'GET'}
+    });
+  }]);
