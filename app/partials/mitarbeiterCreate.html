@@ -1,86 +1,144 @@
-<div ng-controller="MitarbeiterCreateCtrl">
-	<form name="mitarbeiterCreate">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">AndiB</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
 		
-		<h1>Mitarbeiter anlegen</h1>
+		<li class = "dropdown">                                                       
+			<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">MitarbeiterDropdown <b class = "caret"></b></a>
+			<ul class = "dropdown-menu">
+				<li><a href = "#">Mitarbeiter anlegen</a></li>
+				<li><a href = "#">Mitarbeiterliste anzeigen</a></li>		
+			</ul> 
+		</li>
 		
-		</br>
-		
-		
-		<table>
-		  <tr>
-		    <td>Titel:</td>
-		    <td>
-		    	<span  class="nullable">
-		        <select ng-model="anrede" ng-options="t.titel for t in titels">
-		          <option value="">-- Wähle Titel --</option>
-		        </select>
-		    </td>
-		  </tr>
-		  <tr>
-		    <td>Vorname:</td>
-		    <td><input ng-model="user.vorname" name="vorname" required></td>
-		  </tr>
-		  <tr>
-		    <td>Nachname:</td>
-		    <td><input ng-model="user.nachname" name="nachname" required></td>
-		  </tr>
-  		  <tr>
-		    <td>Geschlecht:</td>
-		    <td>
-				<input type="radio" ng-model="user.geschlecht" value="maennlich" />Männlich
-      			<input type="radio" ng-model="user.geschlecht" value="weiblich" />Weiblich
-			</td>
-		  </tr>
-		  <tr>
-		    <td>Straße:</td>
-		    <td><input ng-model="user.adresse.strasse" name="strasse"></td>
-		  </tr>
-		  <tr>
-		    <td>Hausnummer:</td>
-		    <td><input ng-model="user.adresse.hnr" name="hnr"></td>
-		  </tr>
-		  <tr>
-		    <td>PLZ:</td>
-		    <td><input ng-model="user.adresse.plz" name="plz"></td>
-		  </tr>
-		  <tr>
-		    <td>Ort:</td>
-		    <td><input ng-model="user.adresse.ort" name="ort"></td>
-		  </tr>
-		  <tr>
-		    <td>Geburtsdatum:</td>
-		    <td><input ng-model="user.geburtsdatum" name="geburtsdatum"></td>
-		  </tr>
-		  <tr>
-		    <td>Hobbies:</td>
-		    <td>
-			    <ul>
-			      <li ng-repeat="h in hobbies">
-			        <input ng-model="h.hobby">
-			        [<a href ng-click="hobbies.splice($index, 1)">X</a>]
-			      </li>
-			      <li>
-			        [<a href ng-click="hobbies.push({})">Weiteres Hobby hinzufügen</a>]
-			      </li>
-			    </ul>
-   			 <hr/>
-   			 
-			 <tr>
-			    <td>Benutzername:</td>
-			    <td><input ng-model="user.benutzername" name="benutzername" required placeholder="Benutzername eingeben"></td>
-			  </tr>
-			  <tr>
-			    <td>Passwort:</td>
-			    <td><input type='password' ng-model="user.passwort" name="passwort" required placeholder="Passwort eingeben"></td>
-			  </tr>
-				</td>
-			  </tr>
-		</table>
-		
-		<hr/>
-		
-		
-		 <button ng-click="reset()" ng-disabled="isUnchanged(user)">Zurücksetzen</button>
-     	 <button ng-click="save(user);go('/start')" ng-disabled="mitarbeiterCreate.$invalid || isUnchanged(user)">Speichern</button>
-	</form>
+        <li class="active"><a href="#/start/mitarbeiterCreate">Mitarbeiter anlegen</a></li>
+        <li><a href="#/start/mitarbeiterList">Mitarbeiterliste anzeigen</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<div class = "container">
+               
+	<div class = "jumbotron">
+		<center>
+	        <h1>Mitarbeiter anlegen</h1>
+	        <p>Bitte alle Daten ausfüllen, damit ich auch alles über dich weiß!</p>
+	       	
+	       	<div class = "container" ng-controller="MitarbeiterCreateCtrl">
+				<form name="mitarbeiterCreate">
+					<table>
+					  <tr>
+					    <td>Titel:</td>
+					    <td>
+					    	<span  class="nullable">
+					        <select class="form-control" ng-model="anrede" ng-options="t.titel for t in titels">
+					          <option value="">-- Wähle Titel --</option>
+					        </select>
+					    </td>
+					  </tr>
+					  <tr>
+					    <td>Vorname:</td>
+					    <td><input type="text" class="form-control"  ng-model="user.vorname" name="vorname" required placeholder="Vorname eingeben"></td>
+					  </tr>
+					  <tr>
+					    <td>Nachname:</td>
+					    <td><input type="text" class="form-control"  ng-model="user.nachname" name="nachname" required placeholder="Nachname eingeben"></td>
+					  </tr>
+			  		  <tr>
+					    <td>Geschlecht:</td>
+					    <td>
+							<input type="radio" ng-model="user.geschlecht" value="maennlich" /> Männlich
+			      			<input type="radio" ng-model="user.geschlecht" value="weiblich" /> Weiblich
+						</td>
+					  </tr>
+					  <tr>
+					    <td>Straße:</td>
+					    <td><input type="text" class="form-control" ng-model="user.adresse.strasse" name="strasse" placeholder="Straße eingeben"></td>
+					  </tr>
+					  <tr>
+					    <td>Hausnummer:</td>
+					    <td><input type="number" class="form-control" ng-model="user.adresse.hnr" name="hnr"placeholder="Hausnummer eingeben"></td>
+					  </tr>
+					  <tr>
+					    <td>PLZ:</td>
+					    <td><input type="text" class="form-control" ng-model="user.adresse.plz" name="plz" placeholder="Postleitzahl eingeben"></td>
+					  </tr>
+					  <tr>
+					    <td>Ort:</td>
+					    <td><input type="text" class="form-control" ng-model="user.adresse.ort" name="ort" placeholder="Ort eingeben"></td>
+					  </tr>
+					  <tr>
+					    <td>Geburtsdatum:</td>
+					    <td><input type="date" class="form-control" ng-model="user.geburtsdatum" name="geburtsdatum"></td>
+					  </tr>
+					  <tr>
+					    <td>Hobbies:</td>
+					    <td>
+						    <ul>
+						      <li type="text" class="form-control" ng-repeat="h in hobbies">
+						        <input ng-model="h.hobby">
+						        [<a href ng-click="hobbies.splice($index, 1)">X</a>]
+						      </li>
+						      <li>
+						        [<a href type ="text" ng-click="hobbies.push({})">Weiteres Hobby hinzufügen</a>]
+						      </li>
+						    </ul>
+			   			 <hr/>
+			   			 
+						 <tr>
+						    <td>Benutzername:</td>
+						    <td><input type="email" class="form-control" ng-model="user.benutzername" name="benutzername" required placeholder="Benutzername eingeben"></td>
+						  </tr>
+						  <tr>
+						    <td>Passwort:</td>
+						    <td><input type="password" class="form-control" ng-model="user.passwort" name="passwort" required placeholder="Passwort eingeben"></td>
+						  </tr>
+							</td>
+						  </tr>
+					</table>
+					
+					<hr/>
+										
+					 <button ng-disabled="isUnchanged(user)" ng-click="reset()"  type="button" class="btn btn-danger">Zurücksetzen</button>
+					 <a class = "btn btn-info" data-toggle="modal" data-target="#savePopup" ng-click="save(user)" ng-disabled="mitarbeiterCreate.$invalid || isUnchanged(user)">Speichern</a>
+				</form>
+			</div>
+		</center>
+	</div>
+   
+</div>
+
+
+<div class = "navbar navbar-default navbar-fixed-bottom">
+   
+        <div class = "container">
+            <p class = "navbar-text pull-left">AndiB Oleeeeeeeee</p>
+            <a href = "mailto:ich@du.de" class = "navbar-btn btn-danger btn pull-right">Mail mir!</a>
+        </div>
+   
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="savePopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4>Der Mitarbeiter wurde erfolgreich geladen! <span class="glyphicon glyphicon-ok-circle"></span></h4>
+        <br />
+        <button ng-click="go('/start/mitarbeiterList')"  type="button" class="btn btn-primary" class="close" data-dismiss="modal" aria-hidden="true">Zur Mitarbeiterliste</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

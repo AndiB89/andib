@@ -1,32 +1,106 @@
-<div ng-controller="MitarbeiterListCtrl">
-	
-	<h1>Liste aller Mitarbeiter</h1>
-	
-	<table width="100%">
-	  <colgroup>
-	    <col width="5%">
-	    <col width="40%">
-	    <col width="40%">
-	   	<col width="5%">
-	    <col width="5%">
-	    <col width="5%">
-	  </colgroup>
-	  <tr align = 'left'>
-	    <th>#</th>
-	    <th>Vorname</th>
-	    <th>Nachname</th>
-	    <th>Details</th>
-	    <th>Bearbeiten</th>
-	    <th>Löschen</th>
-	  </tr>
-	  <tr ng-repeat="m in mitarbeiterliste">
-	    <td>{{mitarbeiterliste.mitarbeiter.indexOf(m)+1}}</td>
-	    <td>{{m.vorname}}</td>
-	    <td>{{m.nachname}}</td>
-	    <td><img ng-src="img/icon/open.png"></td>
-		<td><img ng-src="img/icon/edit.png"></td>
-		<td><img ng-src="img/icon/delete.png"></td>
-	  </tr>
-	</table>
-
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">AndiB</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+		
+		<li class = "dropdown">                                                       
+			<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">MitarbeiterDropdown <b class = "caret"></b></a>
+			<ul class = "dropdown-menu">
+				<li><a href = "#">Mitarbeiter anlegen</a></li>
+				<li><a href = "#">Mitarbeiterliste anzeigen</a></li>		
+			</ul> 
+		</li>
+		
+        <li><a href="#/start/mitarbeiterCreate">Mitarbeiter anlegen</a></li>
+        <li class="active"><a href="#/start/mitarbeiterList">Mitarbeiterliste anzeigen</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
 </div>
+
+<div class = "container">
+               
+	<div ng-controller="MitarbeiterListCtrl">
+		<br /><br />
+		<h2>Liste aller Mitarbeiter</h2>
+		
+		<table class ="table" width="100%">
+		  <colgroup>
+		    <col width="5%">
+		    <col width="40%">
+		    <col width="40%">
+		   	<col width="5%">
+		    <col width="5%">
+		    <col width="5%">
+		  </colgroup>
+		  <tr align = 'left'>
+		    <th>#</th>
+		    <th>Vorname</th>
+		    <th>Nachname</th>
+		    <th>Details</th>
+		    <th>Bearbeiten</th>
+		    <th>Löschen</th>
+		  </tr>
+		  <tr ng-repeat="m in mitarbeiterliste">
+		    <td>{{mitarbeiterliste.indexOf(m)+1}}</td>
+		    <td>{{m.vorname}}</td>
+		    <td>{{m.nachname}}</td>
+		    <td><a data-toggle="modal" data-target="#showMitarbeiter"><span class="glyphicon glyphicon-search"></span></a></td>
+			<td><span class="glyphicon glyphicon-pencil"></span></td>
+			<td><span class="glyphicon glyphicon-trash"></span></td>
+		  </tr>
+		</table>
+	</div>
+   
+</div>
+
+<div class = "navbar navbar-default navbar-fixed-bottom">
+   
+        <div class = "container">
+            <p class = "navbar-text pull-left">AndiB Oleeeeeeeee</p>
+            <a href = "mailto:ich@du.de" class = "navbar-btn btn-danger btn pull-right">Mail mir!</a>
+        </div>
+ 
+</div>
+
+<div class = "modal fade" id = "contact" role = "dialog">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h4>Der Mitarbeiter wurde erfolgreich geladen! <span class="glyphicon glyphicon-ok-circle"></span></h4>
+            </div>
+            <div class = "modal-footer">
+                <a class = "btn btn-primary" data-dismiss = "modal">Ok</a>    
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="showMitarbeiter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Detail Mitarbeiterinformationen</h4>
+      </div>
+      <div class="modal-body">
+        <p>Vorname: {{mitarbeiterliste[0].vorname}} ...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default">Bearbeiten</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
