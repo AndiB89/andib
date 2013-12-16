@@ -8,8 +8,8 @@ andibControllers.controller('StartCtrl', ['$scope',
   function($scope) {
   }]);
   
-andibControllers.controller('MitarbeiterCreateCtrl', ['$scope', 'Mitarbeiterliste',
-  function($scope, Mitarbeiterliste) {
+andibControllers.controller('MitarbeiterCreateCtrl', ['$scope', '$location', 'Mitarbeiterliste',
+  function($scope, $location, Mitarbeiterliste) {
 	  $scope.titels = [
 	    {titel:'Prof.'},
 	    {titel:'Dr.'},
@@ -24,15 +24,9 @@ andibControllers.controller('MitarbeiterCreateCtrl', ['$scope', 'Mitarbeiterlist
 	    {hobby:''}
 	  ];
 	  
-	  
-
 	  $scope.save = function(user) {
-      	$scope.mitarbeiterliste = Mitarbeiterliste.query(function(data){
-      		user.hobbies=$scope.hobbies;
-	  		data.mitarbeiter.push(user);
-	  		data.$save();
-	  		console.log($scope.mitarbeiterliste);
-	  	});
+	   	Mitarbeiterliste.addMitarbeiter(user);
+	  	$scope.mitarbeiterliste = Mitarbeiterliste.getMitarbeiter();
 	  };
 	
 	  $scope.reset = function() {
@@ -45,12 +39,15 @@ andibControllers.controller('MitarbeiterCreateCtrl', ['$scope', 'Mitarbeiterlist
 	
 	  $scope.reset();
 	  
+	  $scope.go = function ( path ) {
+		  $location.path( path );
+		};
+	  
   }]);
   
 andibControllers.controller('MitarbeiterListCtrl', ['$scope', 'Mitarbeiterliste',
   function($scope, Mitarbeiterliste) {
-  	$scope.mitarbeiterliste = Mitarbeiterliste.query(function(data){
-  	});
+  	$scope.mitarbeiterliste = Mitarbeiterliste.getMitarbeiter();
 
   }]);
 

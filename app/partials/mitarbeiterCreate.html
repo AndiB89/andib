@@ -81,8 +81,6 @@
 		
 		
 		 <button ng-click="reset()" ng-disabled="isUnchanged(user)">Zurücksetzen</button>
-     	 <button ng-click="save(user)"
-     	 
-              ng-disabled="mitarbeiterCreate.$invalid || isUnchanged(user)">Speichern</button>
+     	 <button ng-click="save(user);go('/start')" ng-disabled="mitarbeiterCreate.$invalid || isUnchanged(user)">Speichern</button>
 	</form>
 </div>
